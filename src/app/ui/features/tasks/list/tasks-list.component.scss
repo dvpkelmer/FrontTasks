@@ -1,0 +1,88 @@
+$primary-color: #3f51b5; // Color principal
+$accent-color: #ff4081; // Color de acento
+$warn-color: #f44336; // Color de advertencia
+$background-color: #f4f7fa; // Color de fondo de la lista
+$card-background-color: #ffffff; // Color de fondo de las tarjetas
+$card-border-color: #e0e0e0; // Color del borde de la lista
+$text-color: #333; // Color del texto principal
+$description-color: #555; // Color del texto de descripción
+$status-color: #4caf50; // Color para el estado (puedes cambiar según sea necesario)
+
+.example-container {
+  width: 300px;
+  margin: 20px;
+  display: inline-block;
+  vertical-align: top;
+
+  h2 {
+    text-align: center;
+    color: $primary-color; // Color del encabezado
+    font-weight: bold;
+    border-bottom: 2px solid $primary-color; // Línea debajo del encabezado
+    padding-bottom: 10px; // Espaciado debajo del encabezado
+  }
+}
+
+.example-list {
+  border: 1px solid $card-border-color; // Borde suave
+  min-height: 150px;
+  background: $background-color; // Color de fondo claro
+  border-radius: 8px; // Bordes redondeados
+  padding: 8px;
+}
+
+.example-box {
+  padding: 16px;
+  margin: 10px 0; // Espacio entre tarjetas
+  background-color: $card-background-color; // Fondo blanco para la tarjeta
+  border-radius: 6px; // Bordes redondeados de la tarjeta
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra ligera
+  transition: transform 0.2s, box-shadow 0.2s; // Transiciones suaves
+  cursor: move; // Cambiar el cursor al arrastrar
+  border-left: 4px solid $primary-color; // Borde de color a la izquierda para marcar la tarjeta
+  position: relative; // Posicionamiento relativo para los elementos internos
+
+  h3 {
+    margin: 0 0 4px 0; // Espacio debajo del título
+    font-size: 16px; // Tamaño de fuente del título
+    color: $text-color; // Color del título
+  }
+
+  p {
+    margin: 0 0 4px 0; // Espacio debajo de la descripción
+    font-size: 14px; // Tamaño de fuente de la descripción
+    color: $description-color; // Color del texto de la descripción
+  }
+
+  small {
+    font-size: 12px; // Tamaño de fuente para el texto "asignada a"
+    color: #999; // Color más claro para el texto "asignada a"
+  }
+
+  &:hover {
+    transform: translateY(-2px); // Levantar la tarjeta al pasar el mouse
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); // Aumentar la sombra al pasar el mouse
+  }
+
+  // Indicador de estado
+  .status-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; // Circular
+    background-color: $status-color; // Color de estado
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px; /* Espacio entre el botón y la tabla */
+}
+
+.card-title.users-title {
+  margin-bottom: 10px; /* Asegura que haya espacio adecuado entre el título y el botón */
+}
+

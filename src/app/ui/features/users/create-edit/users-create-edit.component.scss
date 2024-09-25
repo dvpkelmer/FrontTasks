@@ -1,0 +1,17 @@
+.user-form-dialog {
+  min-width: 400px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+
+  button {
+    margin-left: 10px;
+  }
+}

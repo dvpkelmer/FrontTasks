@@ -1,0 +1,14 @@
+<mat-card class="card users-card">
+
+  <mat-card-title class="card-title users-title">Lista de Tareas</mat-card-title>
+
+  <mat-card-content>
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="openCreateUserDialog()">
+        <mat-icon>add</mat-icon>
+        Nueva Tarea
+      </button>
+    </div>
+    <app-drag-drop></app-drag-drop>
+  </mat-card-content>
+</mat-card>

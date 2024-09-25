@@ -1,0 +1,14 @@
+<mat-dialog-content class="user-detail-dialog">
+  <h2 mat-dialog-title>Detalles del Usuario</h2>
+  <mat-divider></mat-divider>
+
+  <div class="user-detail">
+    <p><strong>Nombre:</strong> {{data.userName}}</p>
+    <p><strong>Email:</strong> {{data.email}}</p>
+    <p><strong>Rol:</strong> {{data.role.name}}</p>    
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="onClose()">Cerrar</button>
+  </div>
+</mat-dialog-content>

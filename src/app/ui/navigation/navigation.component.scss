@@ -1,0 +1,76 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 250px;
+  background-color: #f0f4f8; /* Color suave para el fondo del sidenav */
+  color: #333; /* Texto en gris oscuro */
+}
+
+.menu-toolbar {
+  background-color: #dbe5f1; /* Color más suave para la barra superior del menú */
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  padding: 16px;
+}
+
+.mat-nav-list a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: #333; /* Texto en gris oscuro */
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.mat-nav-list a:hover {
+  background-color: rgba(63, 81, 181, 0.1); /* Color hover suave */
+  color: #3f51b5; /* Color primario en hover */
+}
+
+.menu-item mat-icon {
+  margin-right: 16px;
+  color: #3f51b5; /* Íconos con color primario */
+}
+
+.menu-item span {
+  font-size: 16px;
+}
+
+.app-toolbar {
+  background-color: #3f51b5; /* Color más fuerte para el toolbar */
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  color: white;
+}
+
+.menu-toggle-btn {
+  margin-right: 16px;
+}
+
+.app-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.user-menu button {
+  color: white;
+}
+
+.content {
+  padding: 24px;
+  background-color: #ffffff; /* Fondo blanco para el contenido */
+  height: calc(100vh - 64px); /* Ajusta según el tamaño de tu toolbar */
+  overflow: auto;
+  border-top: 1px solid #e0e0e0; /* Líneas suaves para separar secciones */
+}

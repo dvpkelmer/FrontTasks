@@ -1,0 +1,57 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    
+    <mat-toolbar class="menu-toolbar">
+      Menú
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <!-- Ruta para Usuarios -->
+      <a mat-list-item [routerLink]="'/home/users'" class="menu-item">
+        <mat-icon>group</mat-icon>
+        <span>Usuarios</span>
+      </a>
+
+      <!-- Ruta para Tareas -->
+      <a mat-list-item [routerLink]="'/home/tasks'" class="menu-item">
+        <mat-icon>task</mat-icon>
+        <span>Tareas</span>
+      </a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="app-toolbar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        class="menu-toggle-btn">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <!-- Menú desplegable para cerrar sesión -->
+      <div class="user-menu">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar sesión</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+
+    <div class="content">
+      <!-- Área de contenido donde se renderizan las rutas -->
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
