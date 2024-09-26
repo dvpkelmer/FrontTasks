@@ -5,5 +5,6 @@ export interface TokenResponseModel {
   export interface Token {
     status: string
     token: string
+    rol: string
   }
   

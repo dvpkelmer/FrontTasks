@@ -3,13 +3,13 @@
   <mat-card-title class="card-title users-title">Lista de Tareas</mat-card-title>
 
   <mat-card-content>
-    <div class="button-container">
+    <div class="button-container" *ngIf="validatedPermissions('users')">
       <button mat-raised-button color="primary" (click)="openCreateUserDialog()">
         <mat-icon>add</mat-icon>
         Nueva Tarea
       </button>
     </div>
-    <app-drag-drop (clickEventOpenModal)="openModalAssign($event)" (clickEvent)="OnUpdateStatus($event)" [toAssign]="toAssign" [pending]="pending" [inProcess]="inProcess"
+    <app-drag-drop [enabledToassign]="validatedPermissions('assign')" (clickEventOpenModal)="openModalAssign($event)" (clickEvent)="OnUpdateStatus($event)" [toAssign]="toAssign" [pending]="pending" [inProcess]="inProcess"
       [completed]="completed"></app-drag-drop>
   </mat-card-content>
 </mat-card>

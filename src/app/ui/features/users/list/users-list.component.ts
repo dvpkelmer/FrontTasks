@@ -6,6 +6,7 @@ import { UserDetailComponent } from '../detail/users-detail.component';
 import { UsersCreateEditComponent } from '../create-edit/users-create-edit.component';
 import { ConfirmDialogComponent } from 'src/app/shared/components/modal-confirm-dialog/modal-confirm-dialog.component';
 import { ApiUseCases } from 'src/app/application/api/api.usecases';
+import { AccessControlService } from 'src/app/shared/core/services/acces-control.service';
 
 @Component({
   selector: 'app-users-list',
@@ -15,7 +16,7 @@ import { ApiUseCases } from 'src/app/application/api/api.usecases';
 export class UserListComponent implements OnInit {
   users = new MatTableDataSource<any>();
 
-  constructor(private readonly _apiUseCases: ApiUseCases, private dialog: MatDialog) { }
+  constructor(private readonly _apiUseCases: ApiUseCases, private dialog: MatDialog, private _accessControlService: AccessControlService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -91,5 +92,10 @@ export class UserListComponent implements OnInit {
         });
       }
     });
+  }
+
+  validatedPermissions(moduleName: string): boolean {
+    const rol = localStorage.getItem('rol')
+    return this._accessControlService.hasAccess(rol, moduleName);
   }
 }

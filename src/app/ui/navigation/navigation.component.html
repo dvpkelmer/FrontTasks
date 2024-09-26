@@ -10,13 +10,13 @@
 
     <mat-nav-list>
       <!-- Ruta para Usuarios -->
-      <a mat-list-item [routerLink]="'/home/users'" class="menu-item">
+      <a *ngIf="validatedPermissions('users')" mat-list-item [routerLink]="'/home/users'" class="menu-item">
         <mat-icon>group</mat-icon>
         <span>Usuarios</span>
       </a>
 
       <!-- Ruta para Tareas -->
-      <a mat-list-item [routerLink]="'/home/tasks'" class="menu-item">
+      <a *ngIf="validatedPermissions('tasks')" mat-list-item [routerLink]="'/home/tasks'" class="menu-item">
         <mat-icon>task</mat-icon>
         <span>Tareas</span>
       </a>

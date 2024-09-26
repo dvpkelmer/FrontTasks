@@ -8,16 +8,8 @@ import {
   CdkDropList,
 } from '@angular/cdk/drag-drop';
 import { TaskStatus } from 'src/app/shared/core/enums/tasks.enum';
+import { Task } from 'src/app/domain/api/models/tasks.model';
 
-
-interface Task {
-  name: string;
-  description: string;
-  assignedTo: string;
-}
-/**
- * @title Drag&Drop connected sorting
- */
 @Component({
   selector: 'app-drag-drop',
   templateUrl: './drag-drop.component.html',
@@ -33,6 +25,8 @@ export class DragDropComponent {
 
   @Input() completed: Task[] = [];
 
+  @Input() enabledToassign: boolean = true;
+
   @Output() clickEvent = new EventEmitter();
 
   @Output() clickEventOpenModal = new EventEmitter();
@@ -42,7 +36,10 @@ export class DragDropComponent {
   drop(event: CdkDragDrop<Task[]>, state: string) {
     if (event.previousContainer === event.container) {
     } else {
-      this.clickEvent.emit({ event, state });
+      const assignedId = event.previousContainer.data[event.previousIndex].assignedId;
+      if (assignedId != null) {
+        this.clickEvent.emit({ event, state });
+      }
     }
   }
 

@@ -14,6 +14,7 @@ import { TasksCreateComponent } from '../create/tasks-create.component';
 import { Task, TasksResponseType } from 'src/app/shared/core/interfaces/tasks-response.interface';
 import { AssignUserComponent } from '../assign-user/assign-user.component';
 import { TaskStatus } from 'src/app/shared/core/enums/tasks.enum';
+import { AccessControlService } from 'src/app/shared/core/services/acces-control.service';
 
 
 
@@ -31,7 +32,7 @@ export class TasksListComponent {
   users: any[] = [];
 
   tasks: any[] = [];
-  constructor(private readonly _apiUseCases: ApiUseCases, private dialog: MatDialog) {
+  constructor(private readonly _apiUseCases: ApiUseCases, private dialog: MatDialog, private _accessControlService: AccessControlService) {
     this.getUsers();
     this.getTasks();
   }
@@ -130,5 +131,10 @@ export class TasksListComponent {
         });
       }
     });
+  }
+
+  validatedPermissions(moduleName: string): boolean {
+    const rol = localStorage.getItem('rol')
+    return this._accessControlService.hasAccess(rol, moduleName);
   }
 }

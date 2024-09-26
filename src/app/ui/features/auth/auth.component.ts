@@ -26,9 +26,10 @@ export class AuthComponent implements OnInit {
       const { email, password } = this.loginForm.value;
   
       this._authUseCases.login(email, password).then((response: TokenResponseModel) => {
-        const token = response.token.token;
+        const {token , rol} = response.token;
         localStorage.setItem('authToken', token); 
-        this._router.navigate(['home/users']);
+        localStorage.setItem('rol', rol);
+        this._router.navigate(['home/tasks']);
       }).catch((error) => {
         console.error('Error during login', error);
       });
