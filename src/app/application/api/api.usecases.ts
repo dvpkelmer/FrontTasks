@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import { RoleModel } from "src/app/domain/api/models/roles.model";
+import { Task } from "src/app/domain/api/models/tasks.model";
 import { User } from "src/app/domain/api/models/users.model";
 import { ApiRepository } from "src/app/domain/api/resporitory/api.repository";
+import { TasksResponseType } from "src/app/shared/core/interfaces/tasks-response.interface";
 
 @Injectable({
     providedIn: 'root'
@@ -29,6 +31,18 @@ export class ApiUseCases {
 
     deleteUser(id : number): Promise<any> {
         return this._apiRepository.deleteUser(id);
+    }
+
+    createTask(payload : Task): Promise<any> {
+        return this._apiRepository.createTask(payload);
+    }
+
+    getAllTasks(): Promise<TasksResponseType> {
+        return this._apiRepository.getAllTasks();
+    }
+
+    updateTasks(payload : any, id : number): Promise<any> {
+        return this._apiRepository.updateTasks(payload, id);
     }
    
 }

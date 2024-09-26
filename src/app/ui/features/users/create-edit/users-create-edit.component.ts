@@ -47,7 +47,7 @@ export class UsersCreateEditComponent implements OnInit {
 
   onSubmit(): void {
     if (this.userForm.valid) {      
-      this.dialogRef.close({data : this.userForm.value, id : this.data.user.id});
+      this.dialogRef.close({data : this.userForm.value, id : this.data?.user?.id});
     }
   }
 

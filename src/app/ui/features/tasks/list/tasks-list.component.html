@@ -9,6 +9,7 @@
         Nueva Tarea
       </button>
     </div>
-    <app-drag-drop></app-drag-drop>
+    <app-drag-drop (clickEventOpenModal)="openModalAssign($event)" (clickEvent)="OnUpdateStatus($event)" [toAssign]="toAssign" [pending]="pending" [inProcess]="inProcess"
+      [completed]="completed"></app-drag-drop>
   </mat-card-content>
 </mat-card>

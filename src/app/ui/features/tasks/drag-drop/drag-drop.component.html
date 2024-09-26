@@ -1,16 +1,33 @@
 <div class="example-container">
+  <h2>Sin Asignar</h2>
+  <div
+    cdkDropList
+    #toAssignList="cdkDropList"
+    [cdkDropListData]="toAssign"
+    [cdkDropListConnectedTo]="[pendingList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event, stateTasks.ToAssign)">
+    <div class="example-box" *ngFor="let task of toAssign" cdkDrag (click)="openModalAssign(task)">
+      <h3>{{ task.name }}</h3>
+      <p>{{ task.description }}</p>
+      <small>Asignada a: {{ task.assignedUserName }}</small>
+    </div>
+  </div>
+</div>
+
+<div class="example-container">
   <h2>Pendiente</h2>
   <div
     cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="todo"
+    #pendingList="cdkDropList"
+    [cdkDropListData]="pending"
     [cdkDropListConnectedTo]="[inProcessList, doneList]"
     class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let task of todo" cdkDrag>
+    (cdkDropListDropped)="drop($event, stateTasks.Pending)">
+    <div class="example-box" *ngFor="let task of pending" cdkDrag>
       <h3>{{ task.name }}</h3>
       <p>{{ task.description }}</p>
-      <small>Asignada a: {{ task.assignedTo }}</small>
+      <small>Asignada a: {{ task.assignedUserName }}</small>
     </div>
   </div>
 </div>
@@ -21,13 +38,13 @@
     cdkDropList
     #inProcessList="cdkDropList"
     [cdkDropListData]="inProcess"
-    [cdkDropListConnectedTo]="[todoList, doneList]"
+    [cdkDropListConnectedTo]="[pendingList, doneList]"
     class="example-list"
-    (cdkDropListDropped)="drop($event)">
+    (cdkDropListDropped)="drop($event, stateTasks.InProcess)">
     <div class="example-box" *ngFor="let task of inProcess" cdkDrag>
       <h3>{{ task.name }}</h3>
       <p>{{ task.description }}</p>
-      <small>Asignada a: {{ task.assignedTo }}</small>
+      <small>Asignada a: {{ task.assignedUserName }}</small>
     </div>
   </div>
 </div>
@@ -37,14 +54,14 @@
   <div
     cdkDropList
     #doneList="cdkDropList"
-    [cdkDropListData]="done"
-    [cdkDropListConnectedTo]="[todoList, inProcessList]"
+    [cdkDropListData]="completed"
+    [cdkDropListConnectedTo]="[pendingList, inProcessList]"
     class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let task of done" cdkDrag>
+    (cdkDropListDropped)="drop($event, stateTasks.Completed)">
+    <div class="example-box" *ngFor="let task of completed" cdkDrag>
       <h3>{{ task.name }}</h3>
       <p>{{ task.description }}</p>
-      <small>Asignada a: {{ task.assignedTo }}</small>
+      <small>Asignada a: {{ task.assignedUserName }}</small>
     </div>
   </div>
 </div>

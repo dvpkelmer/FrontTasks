@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environement';
 import { User, UsersModel } from 'src/app/domain/api/models/users.model';
 import { RoleModel } from 'src/app/domain/api/models/roles.model';
 import { IApiAdapter } from './api.interface';
+import { Task } from 'src/app/domain/api/models/tasks.model';
+import { TasksResponseType } from 'src/app/shared/core/interfaces/tasks-response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -77,6 +79,52 @@ export class ApiAdapter implements IApiAdapter {
     return new Promise<any>((resolve, reject) => {
       this._http$
         .delete<any>(environment.apiUrl + `/user/${id}`)
+        .subscribe({
+          next: (res: any) => {
+            resolve(res);
+          },
+          error: (err: any) => {
+            reject(err);
+          },
+        });
+    });
+  }
+
+
+  async createTask(payload : Task): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this._http$
+        .post<any>(environment.apiUrl + '/tasks', payload)
+        .subscribe({
+          next: (res: any) => {
+            resolve(res);
+          },
+          error: (err: any) => {
+            reject(err);
+          },
+        });
+    });
+  }
+
+  async getAllTasks(): Promise<TasksResponseType> {
+    return new Promise<TasksResponseType>((resolve, reject) => {
+      this._http$
+        .get<TasksResponseType>(environment.apiUrl + '/tasks')
+        .subscribe({
+          next: (res: TasksResponseType) => {
+            resolve(res);
+          },
+          error: (err: any) => {
+            reject(err);
+          },
+        });
+    });
+  }
+
+  async updateTasks(payload : any, id : number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this._http$
+        .put<any>(environment.apiUrl + `/tasks/${id}`, payload)
         .subscribe({
           next: (res: any) => {
             resolve(res);

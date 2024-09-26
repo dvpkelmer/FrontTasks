@@ -1,0 +1,28 @@
+<mat-dialog-content class="user-form-dialog">
+  <h2 mat-dialog-title>{{ title }}</h2>
+  <mat-divider></mat-divider>
+
+  <form [formGroup]="assignUserForm" (ngSubmit)="onSubmit()">
+
+    <!-- Campo para seleccionar el Rol -->
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="userId">
+        <mat-option *ngFor="let user of users" [value]="user.id">
+          {{ user.userName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="assignUserForm.get('userId')?.hasError('required')">
+        El usuario es requerido.
+      </mat-error>
+    </mat-form-field>
+
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="assignUserForm.invalid">
+        Asignar
+      </button>
+      <button mat-button mat-dialog-close type="button" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</mat-dialog-content>

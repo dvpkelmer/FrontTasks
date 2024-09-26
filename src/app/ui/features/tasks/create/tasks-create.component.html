@@ -1,0 +1,30 @@
+<mat-dialog-content class="user-form-dialog">
+  <h2 mat-dialog-title>{{ title }}</h2>
+  <mat-divider></mat-divider>
+
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Nombre de la tarea</mat-label>
+      <input matInput formControlName="name" placeholder="Nombre de la tarea" />
+      <mat-error *ngIf="taskForm.get('userName')?.invalid && taskForm.get('userName')?.touched">
+        El nombre es requerido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <input matInput formControlName="description" placeholder="Descripción" />
+      <mat-error *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched">
+        La descripción es requerida.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">
+        Crear
+      </button>
+      <button mat-button mat-dialog-close type="button" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</mat-dialog-content>

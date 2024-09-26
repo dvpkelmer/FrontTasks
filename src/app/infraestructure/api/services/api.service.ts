@@ -3,6 +3,8 @@ import { User, UsersModel } from 'src/app/domain/api/models/users.model';
 import { RoleModel } from 'src/app/domain/api/models/roles.model';
 import { ApiAdapter } from '../adapters/api.adapter';
 import { ApiRepository } from 'src/app/domain/api/resporitory/api.repository';
+import { Task } from 'src/app/domain/api/models/tasks.model';
+import { TasksResponseType } from 'src/app/shared/core/interfaces/tasks-response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +34,18 @@ export class ApiService extends ApiRepository {
 
   override deleteUser(id: number): Promise<any> {
     return this._apiAdapter.deleteUser(id);
+  }
+
+  override createTask(payload: Task): Promise<any> {
+    return this._apiAdapter.createTask(payload);
+  }
+
+  override getAllTasks(): Promise<TasksResponseType> {
+    return this._apiAdapter.getAllTasks();
+  }
+
+  override updateTasks(payload: any, id: number): Promise<any> {
+    return this._apiAdapter.updateTasks(payload, id);
   }
 
 }

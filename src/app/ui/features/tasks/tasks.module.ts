@@ -18,11 +18,15 @@ import { ApiUseCases } from 'src/app/application/api/api.usecases';
 import { ApiRepository } from 'src/app/domain/api/resporitory/api.repository';
 import { ApiAdapter } from 'src/app/infraestructure/api/adapters/api.adapter';
 import { ApiService } from 'src/app/infraestructure/api/services/api.service';
+import { TasksCreateComponent } from './create/tasks-create.component';
+import { AssignUserComponent } from './assign-user/assign-user.component';
 
 @NgModule({
   declarations: [
     TasksListComponent,
-    DragDropComponent
+    DragDropComponent,
+    TasksCreateComponent,
+    AssignUserComponent
   ],
   imports: [
     TasksRoutingModule,
