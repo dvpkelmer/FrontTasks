@@ -14,5 +14,5 @@ export interface IApiAdapter {
     createTask(payload : Task): Promise<any>
     getAllTasks(): Promise<TasksResponseType>;
     updateTasks(payload : any, id : number): Promise<any>;
-
+    deleteTask(id : number): Promise<any>
 }

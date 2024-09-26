@@ -137,4 +137,14 @@ export class TasksListComponent {
     const rol = localStorage.getItem('rol')
     return this._accessControlService.hasAccess(rol, moduleName);
   }
+
+  delete($event : any): void {
+    const id = $event.id;
+
+    this._apiUseCases.deleteTask( id).then((response: any) => {
+      this.getTasks()
+    }).catch(() => {
+
+    });
+  }
 }

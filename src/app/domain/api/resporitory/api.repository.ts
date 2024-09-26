@@ -14,5 +14,6 @@ export abstract class ApiRepository {
     abstract createTask(payload : Task): Promise<any>;
     abstract getAllTasks(): Promise<TasksResponseType>;
     abstract updateTasks(payload : any, id : number): Promise<any>;
+    abstract deleteTask(id : number): Promise<any>;
 }
 

@@ -44,5 +44,9 @@ export class ApiUseCases {
     updateTasks(payload : any, id : number): Promise<any> {
         return this._apiRepository.updateTasks(payload, id);
     }
+
+    deleteTask(id : number): Promise<any> {
+        return this._apiRepository.deleteTask(id);
+    }
    
 }

@@ -9,7 +9,8 @@
         Nueva Tarea
       </button>
     </div>
-    <app-drag-drop [enabledToassign]="validatedPermissions('assign')" (clickEventOpenModal)="openModalAssign($event)" (clickEvent)="OnUpdateStatus($event)" [toAssign]="toAssign" [pending]="pending" [inProcess]="inProcess"
-      [completed]="completed"></app-drag-drop>
+    <app-drag-drop [enabledToassign]="validatedPermissions('assign')" [enabledDelete]="validatedPermissions('delete')"
+      (clickEventOpenModal)="openModalAssign($event)" (clickEvent)="OnUpdateStatus($event)" (clickEventDelete)="delete($event)" [toAssign]="toAssign"
+      [pending]="pending" [inProcess]="inProcess" [completed]="completed"></app-drag-drop>
   </mat-card-content>
 </mat-card>

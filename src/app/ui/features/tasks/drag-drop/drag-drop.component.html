@@ -1,67 +1,72 @@
 <div class="example-container" *ngIf="enabledToassign">
   <h2>Sin Asignar</h2>
-  <div
-    cdkDropList
-    #toAssignList="cdkDropList"
-    [cdkDropListData]="toAssign"
-    [cdkDropListConnectedTo]="[pendingList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event, stateTasks.ToAssign)">
-    <div class="example-box" *ngFor="let task of toAssign" cdkDrag (click)="openModalAssign(task)">
+  <div cdkDropList #toAssignList="cdkDropList" [cdkDropListData]="toAssign" [cdkDropListConnectedTo]="[pendingList]"
+    class="example-list" (cdkDropListDropped)="drop($event, stateTasks.ToAssign)">
+    <div class="example-box" *ngFor="let task of toAssign" cdkDrag>
       <h3>{{ task.name }}</h3>
       <p>{{ task.description }}</p>
-      <small>Asignada a: {{ task.assignedUserName }}</small>
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="openModalAssign(task)">
+          <mat-icon>person_add</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" *ngIf="enabledDelete" (click)="delete(task)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="example-container">
   <h2>Pendiente</h2>
-  <div
-    cdkDropList
-    #pendingList="cdkDropList"
-    [cdkDropListData]="pending"
-    [cdkDropListConnectedTo]="[inProcessList, doneList]"
-    class="example-list"
+  <div cdkDropList #pendingList="cdkDropList" [cdkDropListData]="pending"
+    [cdkDropListConnectedTo]="[inProcessList, doneList]" class="example-list"
     (cdkDropListDropped)="drop($event, stateTasks.Pending)">
     <div class="example-box" *ngFor="let task of pending" cdkDrag>
       <h3>{{ task.name }}</h3>
       <p>{{ task.description }}</p>
       <small>Asignada a: {{ task.assignedUserName }}</small>
+      <div class="actions" *ngIf="enabledDelete">
+        <button mat-raised-button color="warn" (click)="delete(task)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="example-container">
   <h2>En Proceso</h2>
-  <div
-    cdkDropList
-    #inProcessList="cdkDropList"
-    [cdkDropListData]="inProcess"
-    [cdkDropListConnectedTo]="[pendingList, doneList]"
-    class="example-list"
+  <div cdkDropList #inProcessList="cdkDropList" [cdkDropListData]="inProcess"
+    [cdkDropListConnectedTo]="[pendingList, doneList]" class="example-list"
     (cdkDropListDropped)="drop($event, stateTasks.InProcess)">
     <div class="example-box" *ngFor="let task of inProcess" cdkDrag>
       <h3>{{ task.name }}</h3>
       <p>{{ task.description }}</p>
       <small>Asignada a: {{ task.assignedUserName }}</small>
+      <div class="actions" *ngIf="enabledDelete">
+        <button mat-raised-button color="warn" (click)="delete(task)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="example-container">
   <h2>Completada</h2>
-  <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="completed"
-    [cdkDropListConnectedTo]="[pendingList, inProcessList]"
-    class="example-list"
+  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="completed"
+    [cdkDropListConnectedTo]="[pendingList, inProcessList]" class="example-list"
     (cdkDropListDropped)="drop($event, stateTasks.Completed)">
     <div class="example-box" *ngFor="let task of completed" cdkDrag>
       <h3>{{ task.name }}</h3>
       <p>{{ task.description }}</p>
       <small>Asignada a: {{ task.assignedUserName }}</small>
+      <div class="actions" *ngIf="enabledDelete">
+        <button mat-raised-button color="warn" (click)="delete(task)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -48,4 +48,8 @@ export class ApiService extends ApiRepository {
     return this._apiAdapter.updateTasks(payload, id);
   }
 
+  override deleteTask(id: number): Promise<any> {
+    return this._apiAdapter.deleteTask(id);
+  }
+
 }

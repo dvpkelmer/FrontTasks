@@ -75,3 +75,14 @@ $status-color: #4caf50; // Color para el estado (puedes cambiar según sea neces
     background-color: $status-color; // Color de estado
   }
 }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+
+  button {
+    margin-left: 10px;
+  }
+
+}

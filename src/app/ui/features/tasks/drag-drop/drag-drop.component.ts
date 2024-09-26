@@ -27,9 +27,14 @@ export class DragDropComponent {
 
   @Input() enabledToassign: boolean = true;
 
+  @Input() enabledDelete: boolean = true;
+
   @Output() clickEvent = new EventEmitter();
 
   @Output() clickEventOpenModal = new EventEmitter();
+
+  @Output() clickEventDelete = new EventEmitter();
+
 
   stateTasks = TaskStatus;
 
@@ -45,5 +50,9 @@ export class DragDropComponent {
 
   openModalAssign(task: Task) {
     this.clickEventOpenModal.emit(task);
+  }
+
+  delete(task: Task) {
+    this.clickEventDelete.emit(task);
   }
 }

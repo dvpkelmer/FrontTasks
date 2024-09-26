@@ -136,4 +136,19 @@ export class ApiAdapter implements IApiAdapter {
     });
   }
 
+  async deleteTask(id : number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this._http$
+        .delete<any>(environment.apiUrl + `/tasks/${id}`)
+        .subscribe({
+          next: (res: any) => {
+            resolve(res);
+          },
+          error: (err: any) => {
+            reject(err);
+          },
+        });
+    });
+  }
+
 }
